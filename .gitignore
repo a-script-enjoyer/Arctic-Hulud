@@ -1,7 +1,7 @@
 .git/
 
 # Git config
-addons/godot-git-plugin
+addons/godot-git-plugin/
 
 # Godot 4+ specific ignores
 .godot/
