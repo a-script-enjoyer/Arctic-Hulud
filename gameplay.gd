@@ -1,6 +1,7 @@
 class_name Gameplay extends Node2D
 
 @onready var head = %WormHead as WormHead
+@onready var map_bounds = %MapBounds as MapBounds
 
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
@@ -33,5 +34,6 @@ func _physics_process(delta: float) -> void:
 
 func update_worm():
 	var new_position:Vector2 = head.position + move_direction * Global.GRID_SIZE
+	new_position = map_bounds.wrap_vector(new_position)
 	head.move_to(new_position)
 	
