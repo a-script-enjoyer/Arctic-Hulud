@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvj22b07hhadd"]
+
+[ext_resource type="Script" path="res://gameplay.gd" id="1_yjqoo"]
+[ext_resource type="PackedScene" uid="uid://ccjotlmmm7sfn" path="res://gameplay/worm_head.tscn" id="2_nlmnm"]
+
+[node name="Gameplay" type="Node2D"]
+position = Vector2(512, 256)
+script = ExtResource("1_yjqoo")
+metadata/_edit_group_ = true
+
+[node name="WormHead" parent="." instance=ExtResource("2_nlmnm")]
+unique_name_in_owner = true
