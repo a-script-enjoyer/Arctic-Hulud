@@ -1,21 +1,24 @@
 class_name Gameplay extends Node2D
 
-@onready var head: WormHead = %WormHead as WormHead
-@onready var map_bounds: MapBounds = %MapBounds as MapBounds
+@onready var head = %WormHead as WormHead
+@onready var map_bounds = %MapBounds as MapBounds
 @onready var spawner: Spawner = %Spawner as Spawner
+
+
 
 
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
-var speed: float = 1500.0
+var speed: float = 3000.0
 
 var move_direction: Vector2 = Vector2.RIGHT
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print('Gameplay')
 	spawner.spawn_food()
-	pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
