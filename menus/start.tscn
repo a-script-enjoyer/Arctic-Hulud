@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b764tg58t7btl"]
+[gd_scene load_steps=7 format=3 uid="uid://b764tg58t7btl"]
 
 [ext_resource type="Script" path="res://menus/start.gd" id="1_b8yx4"]
+[ext_resource type="Texture2D" uid="uid://dpy2esg2f38lc" path="res://menus/sprites/thumper_image_creator_BOT.png" id="2_h6pjq"]
+[ext_resource type="Texture2D" uid="uid://bh2o7x0y2a720" path="res://menus/sprites/thumper_image_creator_TOP.png" id="3_a8x41"]
+[ext_resource type="Script" path="res://menus/thumper_animation.gd" id="3_mnwr0"]
+
+[sub_resource type="Animation" id="Animation_ltpd4"]
+resource_name = "thumper_hit"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThumperTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1),
+"transitions": PackedFloat32Array(1, 2.21914, 1),
+"update": 0,
+"values": [Vector2(400, 544.855), Vector2(400, 561.15), Vector2(400, 544.855)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wpxim"]
+_data = {
+"thumper_hit": SubResource("Animation_ltpd4")
+}
 
 [node name="StartScreen" type="CanvasLayer"]
 process_mode = 3
@@ -61,6 +86,24 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Quit"
+
+[node name="ThumperBot" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(400, 578)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h6pjq")
+
+[node name="ThumperTop" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(400, 544.855)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_a8x41")
+
+[node name="ThumperAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wpxim")
+}
+script = ExtResource("3_mnwr0")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_start_pressed"]
