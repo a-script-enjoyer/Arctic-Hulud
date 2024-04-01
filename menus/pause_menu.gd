@@ -1,7 +1,7 @@
 class_name PauseMenu extends CanvasLayer
 
 @onready var current_score: Label = %"Current Score"
-@onready var high_score = %"High Score"
+@onready var high_score = %HighScore
 @onready var screenshot: Button = %Screenshot
 @onready var quit: Button = %Quit
 @onready var resume: Button = %Resume
@@ -18,7 +18,8 @@ func set_score(n: int):
 	current_score.text = "Current Score: " + str(n)
 
 func _on_screenshot_pressed():
-	queue_free()
+	# TODO: add screenshot functionality
+	pass
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()
@@ -29,7 +30,7 @@ func _on_quit_pressed():
 	# TODO: Are you sure?
 
 func _on_resume_pressed():
-	pass # Replace with function body.
+	queue_free()
 	
 func _notification(what):
 	match what:
