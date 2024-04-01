@@ -12,6 +12,9 @@ func spawn_food():
 							map_bounds.x_max - Global.GRID_SIZE)
 	location.y = randf_range(map_bounds.y_min + Global.GRID_SIZE,
 							map_bounds.y_max - Global.GRID_SIZE)
+							
+	location.x = floorf(location.x / Global.GRID_SIZE) * Global.GRID_SIZE
+	location.y = floorf(location.y / Global.GRID_SIZE) * Global.GRID_SIZE
 
 	var food = food_scene.instantiate()
 	food.position = location
