@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cjv77qciv1l55" path="res://gameplay/sprites/star-food.png" id="1_3ewsh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m1ckm"]
-radius = 16.0
+radius = 8.0
 
-[node name="Food" type="Area2D"]
+[node name="Food" type="Area2D" groups=["Food"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Food"]]
 shape = SubResource("CircleShape2D_m1ckm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Food"]]
 texture = ExtResource("1_3ewsh")

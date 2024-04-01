@@ -9,15 +9,20 @@ class_name Gameplay extends Node2D
 
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
-var speed: float = 3000.0
+var speed: float = 4000.0
 
 var move_direction: Vector2 = Vector2.RIGHT
 
+var snake_parts:Array[SnakePart] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('Gameplay')
+	snake_parts.push_back(head)
+	head.food_eaten.connect(_on_food_eaten)
+	head.body_collision.connect(_on_body_collided)
 	spawner.spawn_food()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,4 +46,17 @@ func update_worm():
 	var new_position:Vector2 = head.position + move_direction * Global.GRID_SIZE
 	new_position = map_bounds.wrap_vector(new_position)
 	head.move_to(new_position)
+	for i in range(1, snake_parts.size(),1):
+		snake_parts[i].move_to(snake_parts[i-1].last_position)
+	
+func _on_food_eaten():
+	spawner.call_deferred("spawn_food")
+	snake_parts.append(spawner.spawn_tail(
+						snake_parts[snake_parts.size()-1].last_position))
+	speed += 500
+						
+func _on_body_collided():
+	pass
+								
+
 	
