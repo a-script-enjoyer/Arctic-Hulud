@@ -25,5 +25,5 @@ func spawn_tail(pos: Vector2):
 	var tail:Tail = tail_scene.instantiate() as Tail
 	tail.extend_snake(pos)
 
-	get_node(".").add_child(tail)
+	get_node(".").call_deferred("add_child", tail)
 	return tail

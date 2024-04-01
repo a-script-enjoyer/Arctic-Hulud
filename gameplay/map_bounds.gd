@@ -26,7 +26,3 @@ func wrap_vector(vector:Vector2) -> Vector2:
 	elif vector.y < y_min:
 		return Vector2(vector.x, y_max)
 	return vector
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -1,29 +1,34 @@
 class_name Gameplay extends Node2D
 
+const gameover_scene: PackedScene = preload("res://menus/game_over.tscn")
+var gameover_menu: GameOver
+const pause_scene: PackedScene = preload("res://menus/pause_menu.tscn")
+var pause_menu: PauseMenu
+
 @onready var head = %WormHead as WormHead
 @onready var map_bounds = %MapBounds as MapBounds
 @onready var spawner: Spawner = %Spawner as Spawner
-
-
-
+@onready var hud = %HUD
 
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
 var speed: float = 4000.0
-
 var move_direction: Vector2 = Vector2.RIGHT
-
 var snake_parts:Array[SnakePart] = []
 
-# Called when the node enters the scene tree for the first time.
+var score: int:
+	get:
+		return score
+	set(value):
+		score = value
+		hud.update_score(value)
+
 func _ready():
-	print('Gameplay')
 	snake_parts.push_back(head)
 	head.food_eaten.connect(_on_food_eaten)
+	time_since_last_move = time_between_moves
 	head.body_collision.connect(_on_body_collided)
 	spawner.spawn_food()
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,7 +40,9 @@ func _process(delta):
 		move_direction = Vector2.LEFT
 	elif Input.is_action_just_pressed("ui_right"):
 		move_direction = Vector2.RIGHT	
-
+	if Input.is_action_just_pressed("ui_cancel"):
+		pause_game()
+		
 func _physics_process(delta: float) -> void:
 	time_since_last_move += delta * speed
 	if time_since_last_move >= time_between_moves:
@@ -54,9 +61,20 @@ func _on_food_eaten():
 	snake_parts.append(spawner.spawn_tail(
 						snake_parts[snake_parts.size()-1].last_position))
 	speed += 500
+	score += 1
+	
 						
 func _on_body_collided():
-	pass
+	if not gameover_menu:
+		gameover_menu = gameover_scene.instantiate() as GameOver
+		add_child(gameover_menu)
+		gameover_menu.set_score(score)
 								
+func pause_game():
+	pause_menu = pause_scene.instantiate() as PauseMenu
+	add_child(pause_menu)
+	pause_menu.set_score(score)
 
-	
+func _notification(what):
+	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		pause_game()
