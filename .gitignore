@@ -5,7 +5,7 @@ addons/
 plugin-hidden/
 
 # Raw Resources
-raw_images/
+raw/
 
 # Godot 4+ specific ignores
 .godot/
