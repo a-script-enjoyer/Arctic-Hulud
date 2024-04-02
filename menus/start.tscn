@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b764tg58t7btl"]
+[gd_scene load_steps=9 format=3 uid="uid://b764tg58t7btl"]
 
 [ext_resource type="Script" path="res://menus/start.gd" id="1_b8yx4"]
+[ext_resource type="Texture2D" uid="uid://7gnhxgn7w326" path="res://menus/background/nicholas-bartos-eQclhzSiRcw-unsplash_resized.jpg" id="2_4beyw"]
 [ext_resource type="Texture2D" uid="uid://dpy2esg2f38lc" path="res://menus/sprites/thumper_image_creator_BOT.png" id="2_h6pjq"]
 [ext_resource type="Texture2D" uid="uid://bh2o7x0y2a720" path="res://menus/sprites/thumper_image_creator_TOP.png" id="3_a8x41"]
-[ext_resource type="Script" path="res://menus/thumper_animation.gd" id="3_mnwr0"]
+[ext_resource type="AudioStream" uid="uid://di85ond56qqyg" path="res://menus/sounds/thumper_source.ogg" id="5_7e4jb"]
+[ext_resource type="AudioStream" uid="uid://c3c5g67j4ri3p" path="res://menus/sounds/dune-scream.mp3" id="6_wjhdu"]
 
 [sub_resource type="Animation" id="Animation_ltpd4"]
 resource_name = "thumper_hit"
-length = 1.5
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -16,11 +18,26 @@ tracks/0/path = NodePath("ThumperTop:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.1),
-"transitions": PackedFloat32Array(1, 2.21914, 1),
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 2.21914, 1, 1),
 "update": 0,
-"values": [Vector2(400, 544.855), Vector2(400, 561.15), Vector2(400, 544.855)]
+"values": [Vector2(400, 544.855), Vector2(400, 550.277), Vector2(400, 561.15), Vector2(400, 546.94), Vector2(400, 544.855)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThumperSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_7e4jb")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpxim"]
 _data = {
@@ -38,6 +55,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 59.9965
+offset_bottom = 40.0
+texture = ExtResource("2_4beyw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 15
@@ -88,22 +111,32 @@ layout_mode = 2
 text = "Quit"
 
 [node name="ThumperBot" type="Sprite2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(400, 578)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h6pjq")
 
 [node name="ThumperTop" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(400, 544.855)
+position = Vector2(400, 549.502)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_a8x41")
 
 [node name="ThumperAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_wpxim")
 }
-script = ExtResource("3_mnwr0")
+
+[node name="ThumperSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_7e4jb")
+autoplay = true
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_wjhdu")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_start_pressed"]

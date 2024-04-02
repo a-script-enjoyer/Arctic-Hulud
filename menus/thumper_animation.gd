@@ -1,11 +1,11 @@
-extends AnimationPlayer
+class_name ThumperAnimation extends AnimationPlayer
 
+@onready var thumper_sound: AudioStreamPlayer = %ThumperSound
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _ready():
+	#thumper_sound.finished.connect(_on_loop_sound)
+	#thumper_sound.play()
+	#
+#func _on_loop_sound(player: AudioStreamPlayer):
+	#thumper_sound.stream_paused = false
+	#thumper_sound.play()
