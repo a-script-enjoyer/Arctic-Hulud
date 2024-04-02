@@ -5,10 +5,12 @@ class_name GameOver extends CanvasLayer
 @onready var new_score: Label = %NewScore
 @onready var restart: Button = %Restart
 @onready var quit: Button = %Quit
+@onready var death_scream = %DeathScream
 
 func _ready():
 	var h_score: int = Global.SAVE_DATA.high_score
 	high_score.text = "High Score: " + str(h_score)
+	death_scream.play()
 
 func set_score(n: int):
 	score.text = "Final Score: " + str(n)

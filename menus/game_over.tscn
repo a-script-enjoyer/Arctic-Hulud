@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bidt2gimqtajl"]
+[gd_scene load_steps=3 format=3 uid="uid://bidt2gimqtajl"]
 
 [ext_resource type="Script" path="res://menus/game_over.gd" id="1_2nkfd"]
+[ext_resource type="AudioStream" uid="uid://lidjntvn7tpk" path="res://menus/sounds/dune-woman-2.mp3" id="2_r4ckr"]
 
 [node name="GameOver" type="CanvasLayer"]
 process_mode = 3
@@ -77,6 +78,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Quit"
+
+[node name="DeathScream" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_r4ckr")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Quit" to="." method="_on_quit_pressed"]

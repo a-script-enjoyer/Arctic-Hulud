@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7hnk2w2hpa84"]
+[gd_scene load_steps=3 format=3 uid="uid://c7hnk2w2hpa84"]
 
 [ext_resource type="Script" path="res://menus/pause_menu.gd" id="1_wj22g"]
+[ext_resource type="AudioStream" uid="uid://benvxaytjtgye" path="res://menus/sounds/dune-drums.mp3" id="2_gaoki"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -81,6 +82,10 @@ text = "Screenshot"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
+
+[node name="PauseDrums" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_gaoki")
 
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Quit" to="." method="_on_quit_pressed"]

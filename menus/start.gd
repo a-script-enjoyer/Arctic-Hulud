@@ -16,7 +16,7 @@ func _ready():
 	var h_score: int = Global.SAVE_DATA.high_score
 	scream.finished.connect(_on_scream_finished)
 	timer.timeout.connect(_on_timer_timeout)
-	timer.wait_time = 5.5
+	timer.wait_time = 5.7
 	high_score.text = "High Score: " + str(h_score)
 	thumper_animation.play("thumper_hit")
 

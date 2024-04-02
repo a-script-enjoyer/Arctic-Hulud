@@ -5,10 +5,12 @@ class_name PauseMenu extends CanvasLayer
 @onready var screenshot: Button = %Screenshot
 @onready var quit: Button = %Quit
 @onready var resume: Button = %Resume
+@onready var pause_drums = %PauseDrums
 
 func _ready():
 	var h_score: int = Global.SAVE_DATA.high_score
 	high_score.text = "High Score: " + str(h_score)
+	pause_drums.play()
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):

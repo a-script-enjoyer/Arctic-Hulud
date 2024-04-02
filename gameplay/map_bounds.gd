@@ -17,12 +17,12 @@ func _ready():
 	y_min = upper_left.position.y
 
 func wrap_vector(vector:Vector2) -> Vector2:
-	if vector.x > x_max:
+	if vector.x >= x_max:
 		return Vector2(x_min, vector.y)
-	elif vector.x < x_min:
+	elif vector.x <= x_min:
 		return Vector2(x_max, vector.y)
-	elif vector.y > y_max:
+	elif vector.y >= y_max:
 		return Vector2(vector.x, y_min)
-	elif vector.y < y_min:
+	elif vector.y <= y_min:
 		return Vector2(vector.x, y_max)
 	return vector
