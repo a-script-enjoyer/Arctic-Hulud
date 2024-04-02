@@ -9,7 +9,6 @@ script = ExtResource("1_wj22g")
 
 [node name="Panel" type="Panel" parent="."]
 top_level = true
-light_mask = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

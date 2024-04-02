@@ -1,23 +1,23 @@
 [gd_scene load_steps=9 format=3 uid="uid://ckthkcc2x1vm1"]
 
 [ext_resource type="Script" path="res://gameplay/tail.gd" id="1_2y0cy"]
-[ext_resource type="Texture2D" uid="uid://bhvyuh84b4tn6" path="res://gameplay/sprites/apple.png" id="2_rknto"]
-[ext_resource type="Texture2D" uid="uid://h87xl0y17j2e" path="res://gameplay/sprites/bread.png" id="3_qoagw"]
-[ext_resource type="Texture2D" uid="uid://c0fqdf3ehlh71" path="res://gameplay/sprites/broccoli.png" id="4_3ncoo"]
-[ext_resource type="Texture2D" uid="uid://dw030y03rt1w1" path="res://gameplay/sprites/coconut.png" id="5_ey2b5"]
-[ext_resource type="Texture2D" uid="uid://bobnkd3xed3ob" path="res://gameplay/sprites/milk.png" id="6_v4j4t"]
-[ext_resource type="Texture2D" uid="uid://f4iyg2uxkhw1" path="res://gameplay/sprites/orange.png" id="7_ordjj"]
+[ext_resource type="Texture2D" uid="uid://bl1fbs2felwv" path="res://gameplay/sprites/worm/mntn_x1_d.jpg" id="2_8o5eb"]
+[ext_resource type="Texture2D" uid="uid://dvpexilb46tvf" path="res://gameplay/sprites/worm/mntn_dark_s.jpg" id="3_l72bt"]
+[ext_resource type="Texture2D" uid="uid://56akknckj2gq" path="res://gameplay/sprites/worm/mntn_darkx_d.jpg" id="4_drvua"]
+[ext_resource type="Texture2D" uid="uid://cam57cno5vrbh" path="res://gameplay/sprites/worm/mntn_brown_s.jpg" id="5_rglhd"]
+[ext_resource type="Texture2D" uid="uid://x3j82bsbw5ch" path="res://gameplay/sprites/worm/desert_mntn2_s.jpg" id="6_rjt5k"]
+[ext_resource type="Texture2D" uid="uid://bm4umf0eu15mi" path="res://gameplay/sprites/worm/desert_cracks_s.jpg" id="7_ivapk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l2v6"]
 radius = 8.0
 
 [node name="Tail" type="Area2D" groups=["Body"]]
+scale = Vector2(-0.025, -0.025)
 script = ExtResource("1_2y0cy")
-textures = Array[Texture]([ExtResource("2_rknto"), ExtResource("3_qoagw"), ExtResource("4_3ncoo"), ExtResource("5_ey2b5"), ExtResource("6_v4j4t"), ExtResource("7_ordjj")])
+textures = Array[Texture]([ExtResource("2_8o5eb"), ExtResource("3_l72bt"), ExtResource("4_drvua"), ExtResource("5_rglhd"), ExtResource("6_rjt5k"), ExtResource("7_ivapk")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Body"]]
 unique_name_in_owner = true
-texture = ExtResource("2_rknto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Body"]]
 shape = SubResource("CircleShape2D_0l2v6")

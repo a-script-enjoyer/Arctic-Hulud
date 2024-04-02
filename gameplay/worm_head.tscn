@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccjotlmmm7sfn"]
 
 [ext_resource type="Script" path="res://gameplay/worm_head.gd" id="1_cexh1"]
-[ext_resource type="Texture2D" uid="uid://cwr2el5lfygs5" path="res://gameplay/sprites/head-dw-logo.png" id="2_8a5sy"]
+[ext_resource type="Texture2D" uid="uid://dr5hq6v3v4inp" path="res://gameplay/sprites/worm/0_desert_cracksv_s.jpg" id="2_6c32m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx2a5"]
 radius = 16.0
@@ -10,7 +10,8 @@ radius = 16.0
 script = ExtResource("1_cexh1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8a5sy")
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_6c32m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cx2a5")

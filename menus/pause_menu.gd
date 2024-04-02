@@ -1,5 +1,6 @@
 class_name PauseMenu extends CanvasLayer
 
+
 @onready var current_score: Label = %"Current Score"
 @onready var high_score = %HighScore
 @onready var screenshot: Button = %Screenshot
@@ -20,9 +21,11 @@ func set_score(n: int):
 	current_score.text = "Current Score: " + str(n)
 
 func _on_screenshot_pressed():
-	# TODO: add screenshot functionality
-	pass
-
+	visible = false
+	var image: Image = get_viewport().get_texture().get_image()
+	image.save_png(Global.find_screenshot_path())
+	visible = true
+	
 func _on_restart_pressed():
 	get_tree().reload_current_scene()
 	# TODO: Are you sure?
@@ -36,9 +39,15 @@ func _on_resume_pressed():
 	
 func _notification(what):
 	match what:
+		# FIXME: Throws an error in debugger
 		NOTIFICATION_ENTER_TREE:
 			get_tree().paused = true
 		NOTIFICATION_EXIT_TREE:
 			get_tree().paused = false
+			
+func _on_continue_music():
+	# TODO: Contniue music when going from gameplay scene to pause menu
+	pass
+
 
 

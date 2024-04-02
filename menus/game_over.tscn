@@ -8,6 +8,7 @@ process_mode = 3
 script = ExtResource("1_2nkfd")
 
 [node name="Panel" type="Panel" parent="."]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.396078)
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="GameOver" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
@@ -59,13 +61,18 @@ text = "New High Score!"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_top = 5
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-columns = 2
+
+[node name="Screenshot" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Screenshot"
 
 [node name="Restart" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/GridContainer"]
 unique_name_in_owner = true
@@ -83,5 +90,6 @@ text = "Quit"
 unique_name_in_owner = true
 stream = ExtResource("2_r4ckr")
 
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Screenshot" to="." method="_on_screenshot_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Quit" to="." method="_on_quit_pressed"]

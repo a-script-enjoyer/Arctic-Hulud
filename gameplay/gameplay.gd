@@ -5,10 +5,12 @@ var gameover_menu: GameOver
 const pause_scene: PackedScene = preload("res://menus/pause_menu.tscn")
 var pause_menu: PauseMenu
 
-@onready var head = %WormHead as WormHead
+@onready var head: WormHead = %WormHead as WormHead
 @onready var map_bounds = %MapBounds as MapBounds
 @onready var spawner: Spawner = %Spawner as Spawner
 @onready var hud = %HUD
+@onready var desert_bells: AudioStreamPlayer = %DesertBells
+@onready var timer: Timer = %Timer
 
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
@@ -27,7 +29,9 @@ var score: int:
 		hud.update_score(value)
 
 func _ready():
+	desert_bells.play()
 	snake_parts.push_back(head)
+	desert_bells.finished.connect(_on_desert_bells_finished)
 	head.food_eaten.connect(_on_food_eaten)
 	time_since_last_move = time_between_moves
 	head.body_collision.connect(_on_body_collided)
@@ -64,6 +68,7 @@ func update_worm():
 	head.move_to(new_position)
 	for i in range(1, snake_parts.size(),1):
 		snake_parts[i].move_to(snake_parts[i-1].last_position)
+		# TODO: Add rotation to sprite
 	snake_direction = move_direction
 		
 func _on_food_eaten():
@@ -89,3 +94,11 @@ func pause_game():
 func _notification(what):
 	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
 		pause_game()
+		
+func _on_desert_bells_finished():
+	timer.start()
+	timer.wait_time = 5.0
+	desert_bells.play()
+			
+func _on_music_playing(music):
+	music.play()
