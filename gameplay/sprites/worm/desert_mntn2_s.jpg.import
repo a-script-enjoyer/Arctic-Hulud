@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f4iyg2uxkhw1"
-path="res://.godot/imported/orange.png-3ecfdc6bf422d1941663452ed1f1514a.ctex"
+uid="uid://x3j82bsbw5ch"
+path="res://.godot/imported/desert_mntn2_s.jpg-5ee0e330b76bb1c4acea8c8dbba5d75e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/sprites/orange.png"
-dest_files=["res://.godot/imported/orange.png-3ecfdc6bf422d1941663452ed1f1514a.ctex"]
+source_file="res://gameplay/sprites/worm/desert_mntn2_s.jpg"
+dest_files=["res://.godot/imported/desert_mntn2_s.jpg-5ee0e330b76bb1c4acea8c8dbba5d75e.ctex"]
 
 [params]
 

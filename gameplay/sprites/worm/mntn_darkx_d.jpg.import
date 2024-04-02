@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjv77qciv1l55"
-path="res://.godot/imported/star-food.png-354b64e88285c22b81534b18866fdaa9.ctex"
+uid="uid://56akknckj2gq"
+path="res://.godot/imported/mntn_darkx_d.jpg-48044a1e0ca18c89a46c4f03db5afada.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/sprites/star-food.png"
-dest_files=["res://.godot/imported/star-food.png-354b64e88285c22b81534b18866fdaa9.ctex"]
+source_file="res://gameplay/sprites/worm/mntn_darkx_d.jpg"
+dest_files=["res://.godot/imported/mntn_darkx_d.jpg-48044a1e0ca18c89a46c4f03db5afada.ctex"]
 
 [params]
 

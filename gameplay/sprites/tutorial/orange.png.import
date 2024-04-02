@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bobnkd3xed3ob"
-path="res://.godot/imported/milk.png-6ea2e9a07c5895b367ebcaeedd929911.ctex"
+uid="uid://f4iyg2uxkhw1"
+path="res://.godot/imported/orange.png-237dd6664c3e0ea93305b3e2420bc849.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/sprites/milk.png"
-dest_files=["res://.godot/imported/milk.png-6ea2e9a07c5895b367ebcaeedd929911.ctex"]
+source_file="res://gameplay/sprites/tutorial/orange.png"
+dest_files=["res://.godot/imported/orange.png-237dd6664c3e0ea93305b3e2420bc849.ctex"]
 
 [params]
 

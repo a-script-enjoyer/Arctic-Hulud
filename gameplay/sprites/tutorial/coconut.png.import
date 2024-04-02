@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhvyuh84b4tn6"
-path="res://.godot/imported/apple.png-a5527a56c33a8f4be3b0657a75e59287.ctex"
+uid="uid://dw030y03rt1w1"
+path="res://.godot/imported/coconut.png-23458b61fba5ba0edfacfefe290b7828.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/sprites/apple.png"
-dest_files=["res://.godot/imported/apple.png-a5527a56c33a8f4be3b0657a75e59287.ctex"]
+source_file="res://gameplay/sprites/tutorial/coconut.png"
+dest_files=["res://.godot/imported/coconut.png-23458b61fba5ba0edfacfefe290b7828.ctex"]
 
 [params]
 

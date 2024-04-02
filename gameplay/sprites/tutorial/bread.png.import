@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwr2el5lfygs5"
-path="res://.godot/imported/head-dw-logo.png-41ca730e66bfe0bfc8b5139bbabd9b1a.ctex"
+uid="uid://h87xl0y17j2e"
+path="res://.godot/imported/bread.png-e7080b8033bc3332914a8e2b1b8f3ba8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/sprites/head-dw-logo.png"
-dest_files=["res://.godot/imported/head-dw-logo.png-41ca730e66bfe0bfc8b5139bbabd9b1a.ctex"]
+source_file="res://gameplay/sprites/tutorial/bread.png"
+dest_files=["res://.godot/imported/bread.png-e7080b8033bc3332914a8e2b1b8f3ba8.ctex"]
 
 [params]
 
