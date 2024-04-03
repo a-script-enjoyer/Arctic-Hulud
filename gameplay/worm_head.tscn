@@ -1,19 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccjotlmmm7sfn"]
+[gd_scene load_steps=5 format=3 uid="uid://ccjotlmmm7sfn"]
 
 [ext_resource type="Script" path="res://gameplay/worm_head.gd" id="1_cexh1"]
 [ext_resource type="Texture2D" uid="uid://dr5hq6v3v4inp" path="res://gameplay/sprites/worm/0_desert_cracksv_s.jpg" id="2_6c32m"]
+[ext_resource type="Texture2D" uid="uid://cx3abpafuv6yl" path="res://gameplay/sprites/worm/grass_ground_n.jpg" id="3_wgvv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx2a5"]
 radius = 16.0
 
 [node name="WormHead" type="Area2D"]
 script = ExtResource("1_cexh1")
+textures = Array[Texture]([ExtResource("2_6c32m"), ExtResource("3_wgvv4")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("2_6c32m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_cx2a5")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

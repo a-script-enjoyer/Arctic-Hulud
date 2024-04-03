@@ -20,6 +20,9 @@ var new_move_direction: Vector2 = Vector2.ZERO
 var snake_parts:Array[SnakePart] = []
 var is_only_head: bool = true
 var snake_direction: Vector2 = Vector2.ZERO
+var dive_tracker: int = 1
+var snake_is_diving: bool = false
+var dive_segment_length: int = 10
 
 var score: int:
 	get:
@@ -48,11 +51,15 @@ func _process(delta):
 	elif Input.is_action_just_pressed("ui_right"):
 		new_move_direction = Vector2.RIGHT
 	move_direction = new_move_direction
-
-
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		if not snake_is_diving:
+			snake_is_diving = true
+			head.dive()
+		
 	if Input.is_action_just_pressed("ui_cancel"):
 		pause_game()
-
+	
 func _physics_process(delta: float) -> void:
 	time_since_last_move += delta * speed
 	if time_since_last_move >= time_between_moves:
@@ -65,17 +72,43 @@ func update_worm():
 			move_direction *=-1
 	var new_position:Vector2 = head.position + move_direction * Global.GRID_SIZE
 	new_position = map_bounds.wrap_vector(new_position)
+
 	head.move_to(new_position)
+	head.shift_underground()
+	
+	if snake_is_diving == true:
+		head.move_underground_head(head.is_diving)
+		dive_tracker += 1
+	if is_only_head and dive_tracker > dive_segment_length:
+		dive_tracker = 1
+	elif dive_tracker > dive_segment_length:
+		dive_tracker = 1
+	
 	for i in range(1, snake_parts.size(),1):
 		snake_parts[i].move_to(snake_parts[i-1].last_position)
-		# TODO: Add rotation to sprite
+		snake_parts[i].move_underground(snake_parts[i-1].last_underground_state)
+		snake_parts[i].shift_underground()
+
+	print(dive_tracker)
+	head.resurface(dive_tracker, dive_segment_length)
+	if head.is_diving == false:
+		dive_tracker = 1
+	snake_is_diving = check_if_part_worm_underground()
+	# TODO: Add rotation to sprite
 	snake_direction = move_direction
-		
+
+func check_if_part_worm_underground():
+	for i in range(snake_parts.size()):
+		if snake_parts[i].is_underground == true:
+			return true
+	return false
+
 func _on_food_eaten():
 	is_only_head = false
 	spawner.call_deferred("spawn_food")
 	snake_parts.append(spawner.spawn_tail(
-						snake_parts[snake_parts.size()-1].last_position))
+						snake_parts[snake_parts.size()-1].last_position,
+						snake_parts[snake_parts.size()-1].last_underground_state))
 	speed += 500
 	score += 1
 	

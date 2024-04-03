@@ -39,6 +39,7 @@ func _on_quit_pressed():
 	# TODO: Are you sure?
 
 func _on_resume_pressed():
+	get_tree().paused = false
 	queue_free()
 
 func _on_continue_music():

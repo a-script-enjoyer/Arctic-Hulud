@@ -21,9 +21,9 @@ func spawn_food():
 	
 	get_node(".").add_child(food)
 	
-func spawn_tail(pos: Vector2):
+func spawn_tail(pos: Vector2, und):
 	var tail:Tail = tail_scene.instantiate() as Tail
-	tail.extend_snake(pos)
+	tail.extend_snake(pos, und)
 
 	get_node(".").call_deferred("add_child", tail)
 	return tail
