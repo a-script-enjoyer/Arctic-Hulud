@@ -138,6 +138,6 @@ stream = ExtResource("6_wjhdu")
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Quit" to="." method="_on_quit_pressed"]

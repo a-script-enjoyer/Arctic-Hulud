@@ -1,5 +1,7 @@
 class_name StartMenu extends CanvasLayer
 
+signal scream_played
+
 const gameplay_scene: PackedScene = preload("res://gameplay/gameplay.tscn")
 
 @onready var high_score: Label = %HighScore
@@ -14,22 +16,19 @@ var step: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var h_score: int = Global.SAVE_DATA.high_score
-	scream.finished.connect(_on_scream_finished)
-	timer.timeout.connect(_on_timer_timeout)
-	timer.wait_time = 5.7
 	high_score.text = "High Score: " + str(h_score)
+	if _skip_scream:
+		return
 	thumper_animation.play("thumper_hit")
-
+	
 func _on_start_pressed():
-	timer.start()
+	scream_played.emit()
+	scream_played.connect(_skip_scream)
 	scream.play()
-	
-	
+	start.text = "Skip"
+
 func _on_quit_pressed():
 	get_tree().quit()
 	
-func _on_timer_timeout():
+func _skip_scream():
 	get_tree().change_scene_to_packed(gameplay_scene)
-	
-func _on_scream_finished():
-	timer.stop()
