@@ -12,9 +12,11 @@ func _ready():
 	var h_score: int = Global.SAVE_DATA.high_score
 	high_score.text = "High Score: " + str(h_score)
 	pause_drums.play()
+	get_tree().paused = true
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().paused = false
 		queue_free()
 
 func set_score(n: int):
@@ -36,17 +38,9 @@ func _on_quit_pressed():
 
 func _on_resume_pressed():
 	queue_free()
-	
-func _notification(what):
-	match what:
-		# FIXME: Throws an error in debugger
-		NOTIFICATION_ENTER_TREE:
-			get_tree().paused = true
-		NOTIFICATION_EXIT_TREE:
-			get_tree().paused = false
-			
+
 func _on_continue_music():
-	# TODO: Contniue music when going from gameplay scene to pause menu
+	# TODO: Continue music when going from gameplay scene to pause menu
 	pass
 
 
