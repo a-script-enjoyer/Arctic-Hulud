@@ -43,10 +43,11 @@ script = ExtResource("3_d7d17")
 
 [node name="UpperLeft" type="Marker2D" parent="MapBounds"]
 unique_name_in_owner = true
+position = Vector2(16, 16)
 
 [node name="LowerRight" type="Marker2D" parent="MapBounds"]
 unique_name_in_owner = true
-position = Vector2(800, 720)
+position = Vector2(784, 720)
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("map_bounds")]
 unique_name_in_owner = true

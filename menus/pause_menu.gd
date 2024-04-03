@@ -23,12 +23,14 @@ func set_score(n: int):
 	current_score.text = "Current Score: " + str(n)
 
 func _on_screenshot_pressed():
+	# FIXME: Disable Scene visibility for screenshot
 	visible = false
 	var image: Image = get_viewport().get_texture().get_image()
 	image.save_png(Global.find_screenshot_path())
 	visible = true
 	
 func _on_restart_pressed():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 	# TODO: Are you sure?
 

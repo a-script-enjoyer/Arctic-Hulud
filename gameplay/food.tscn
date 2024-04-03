@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bng2ftxhdhvo4"]
 
-[ext_resource type="Texture2D" uid="uid://cjv77qciv1l55" path="res://gameplay/sprites/star-food.png" id="1_3ewsh"]
+[ext_resource type="Texture2D" uid="uid://cjv77qciv1l55" path="res://gameplay/sprites/tutorial/star-food.png" id="1_3ewsh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m1ckm"]
-radius = 8.0
+radius = 15.0
 
 [node name="Food" type="Area2D" groups=["Food"]]
 

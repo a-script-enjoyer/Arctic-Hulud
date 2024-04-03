@@ -7,5 +7,5 @@ class_name Tail extends SnakePart
 func _ready():
 	sprite_2d.texture = textures.pick_random()
 
-func extend_snake(new_position):
+func extend_snake(new_position: Vector2):
 	self.position = new_position
