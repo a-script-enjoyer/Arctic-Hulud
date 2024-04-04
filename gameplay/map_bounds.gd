@@ -8,9 +8,6 @@ var x_min: float
 var y_max: float
 var y_min: float
 
-# TODO: Bounds are displacing worm before first food
-# FIXME: This leads to an immortality bug
-
 func _ready():
 	x_max = lower_right.position.x
 	x_min = upper_left.position.x

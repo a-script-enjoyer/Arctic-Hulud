@@ -52,9 +52,7 @@ func _on_death_scream_finished():
 	thumper_sound_over.play()
 	
 func _on_thumper_over_finished():
-	print("thumper restarts")
 	thumper_sound_over.play()
-	
 	
 func _notification(what):
 	# FIXME: I should fix this like I fixed pause

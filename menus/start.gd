@@ -29,6 +29,7 @@ func _on_start_pressed():
 		start_pressed = true
 		scream.play()
 		start.text = "Skip"
+	scream.finished.connect(_launch_gameplay)
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -36,4 +37,7 @@ func _on_quit_pressed():
 func _skip_scream():
 	skip_request = true
 	scream.stop()
+	_launch_gameplay()
+	
+func _launch_gameplay():
 	get_tree().change_scene_to_packed(gameplay_scene)
