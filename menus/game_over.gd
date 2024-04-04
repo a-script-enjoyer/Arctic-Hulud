@@ -11,10 +11,13 @@ class_name GameOver extends CanvasLayer
 @onready var death_scream = %DeathScream
 @onready var margin_container: MarginContainer = %MarginContainer
 @onready var clean_view_port = %CleanViewPort
+@onready var thumper_sound_over = %ThumperSoundOver
 
 func _ready():
 	var h_score: int = Global.SAVE_DATA.high_score
 	high_score.text = "High Score: " + str(h_score)
+	death_scream.finished.connect(_on_death_scream_finished)
+	thumper_sound_over.finished.connect(_on_thumper_over_finished)
 	death_scream.play()
 
 func set_score(n: int):
@@ -29,6 +32,7 @@ func set_score(n: int):
 		new_score.visible = false
 	
 func _on_screenshot_pressed():
+	# FIXME: Doesn't remove overlay
 	var boolean_visibility: Array = [panel.visible, high_score.visible,
 									margin_container.visible]
 	for i in range(len(boolean_visibility)):
@@ -44,7 +48,16 @@ func _on_restart_pressed():
 func _on_quit_pressed():
 	get_tree().quit()
 	
+func _on_death_scream_finished():
+	thumper_sound_over.play()
+	
+func _on_thumper_over_finished():
+	print("thumper restarts")
+	thumper_sound_over.play()
+	
+	
 func _notification(what):
+	# FIXME: I should fix this like I fixed pause
 	match what:
 		NOTIFICATION_ENTER_TREE:
 			get_tree().paused = true
