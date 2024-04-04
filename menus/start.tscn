@@ -116,7 +116,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h6pjq")
 
 [node name="ThumperTop" type="Sprite2D" parent="."]
-position = Vector2(400, 544.855)
+position = Vector2(400, 561.009)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_a8x41")
 

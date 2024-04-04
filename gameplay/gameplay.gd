@@ -16,6 +16,7 @@ var pause_menu: PauseMenu
 @onready var rumble = %DivingSound
 @onready var spawn_sound = %SpawnSound
 @onready var moving_sound = %MovingSound
+@onready var animate_snake_part = %AnimateSnakePart
 
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
@@ -77,22 +78,19 @@ func _process(delta):
 func _physics_process(delta: float) -> void:
 	time_since_last_move += delta * speed
 	if time_since_last_move >= time_between_moves:
-		update_worm()
+		update_worm(time_between_moves)
 		time_since_last_move = 0
 
-func update_worm():
-	head.rotate_model(move_direction)
+func update_worm(delta):
 	if has_moving_started and not is_moving_sound_locked:
 		moving_sound.play()
 		is_moving_sound_locked = true
 	if not is_only_head:
-		if snake_direction *-1 == move_direction:
-			move_direction *=-1
+		if snake_direction * -1 == move_direction:
+			move_direction *= -1
 	var new_position:Vector2 = head.position + move_direction * Global.GRID_SIZE
 	new_position = map_bounds.wrap_vector(new_position)
-
 	head.move_to(new_position, move_direction)
-	
 	head.shift_underground()
 	
 	if snake_is_diving == true:
@@ -158,7 +156,10 @@ func _on_music_playing(music):
 	music.play()
 	
 func _on_moving_sound_finished():
-	speed_changed.connect(_quicken_moving_sound_raw)
+	var moving_loop_activated: bool = false
+	if not moving_loop_activated:
+		speed_changed.connect(_quicken_moving_sound_raw)
+	moving_loop_activated = true
 	moving_sound.play()
 	
 func _quicken_moving_sound_raw():

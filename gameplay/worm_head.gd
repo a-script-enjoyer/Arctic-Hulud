@@ -7,6 +7,7 @@ signal body_collision
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var collision_shape_2d = %CollisionShape2D
+@onready var part_animator = %PartAnimator
 
 var texture_memo: Texture
 var chomp_count: int = 0

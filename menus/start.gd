@@ -22,6 +22,10 @@ func _ready():
 	thumper_animation.play("thumper_hit")
 	
 func _on_start_pressed():
+	var s_pressed: bool = false
+	if not s_pressed:
+		scream.finished.connect(_launch_gameplay)
+	s_pressed = true
 	scream_played.emit()
 	if not start_pressed:
 		scream_played.connect(_skip_scream)
@@ -29,7 +33,7 @@ func _on_start_pressed():
 		start_pressed = true
 		scream.play()
 		start.text = "Skip"
-	scream.finished.connect(_launch_gameplay)
+
 
 func _on_quit_pressed():
 	get_tree().quit()
