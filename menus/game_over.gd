@@ -61,6 +61,3 @@ func _notification(what):
 			get_tree().paused = true
 		NOTIFICATION_EXIT_TREE:
 			get_tree().paused = false
-
-
-

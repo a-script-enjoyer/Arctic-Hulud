@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cll3w4bpjs3r4"
+path="res://.godot/imported/Slime1_Walk_right.aseprite-d1962bd713e18c28e30c5fe0a8bd8730.res"
+
+[deps]
+
+source_file="res://autoloads/ASEPRITE/Slime1/Walk/Slime1_Walk_right.aseprite"
+dest_files=["res://.godot/imported/Slime1_Walk_right.aseprite-d1962bd713e18c28e30c5fe0a8bd8730.res"]
+
+[params]
+

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b764tg58t7btl"]
 
-[ext_resource type="Script" path="res://menus/start.gd" id="1_b8yx4"]
+[ext_resource type="Script" uid="uid://dha76bj6ihwun" path="res://menus/start.gd" id="1_b8yx4"]
 [ext_resource type="Texture2D" uid="uid://7gnhxgn7w326" path="res://menus/background/nicholas-bartos-eQclhzSiRcw-unsplash_resized.jpg" id="2_4beyw"]
 [ext_resource type="Texture2D" uid="uid://dpy2esg2f38lc" path="res://menus/sprites/thumper_image_creator_BOT.png" id="2_h6pjq"]
 [ext_resource type="Texture2D" uid="uid://bh2o7x0y2a720" path="res://menus/sprites/thumper_image_creator_TOP.png" id="3_a8x41"]
@@ -41,7 +41,7 @@ tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpxim"]
 _data = {
-"thumper_hit": SubResource("Animation_ltpd4")
+&"thumper_hit": SubResource("Animation_ltpd4")
 }
 
 [node name="StartScreen" type="CanvasLayer"]
@@ -123,7 +123,7 @@ texture = ExtResource("3_a8x41")
 [node name="ThumperAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_wpxim")
+&"": SubResource("AnimationLibrary_wpxim")
 }
 
 [node name="ThumperSound" type="AudioStreamPlayer" parent="."]
@@ -138,6 +138,6 @@ stream = ExtResource("6_wjhdu")
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Start" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Quit" to="." method="_on_quit_pressed"]

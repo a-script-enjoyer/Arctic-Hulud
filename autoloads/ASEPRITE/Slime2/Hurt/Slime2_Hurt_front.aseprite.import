@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://7cpc8twfes38"
+path="res://.godot/imported/Slime2_Hurt_front.aseprite-6f8089f4af12623e3239d33add847282.res"
+
+[deps]
+
+source_file="res://autoloads/ASEPRITE/Slime2/Hurt/Slime2_Hurt_front.aseprite"
+dest_files=["res://.godot/imported/Slime2_Hurt_front.aseprite-6f8089f4af12623e3239d33add847282.res"]
+
+[params]
+

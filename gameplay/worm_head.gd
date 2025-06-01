@@ -60,14 +60,16 @@ func _on_area_entered(area):
 
 func shift_underground():
 	if is_underground == true:
+		collision_layer = 2
+		collision_mask = 2
 		sprite_2d.texture = textures[1]
 		sprite_2d.modulate = "ffffffab"
 		sprite_2d.scale.x = -0.060
 		sprite_2d.scale.y = -0.060
-		collision_shape_2d.disabled = true
 	else:
+		collision_layer = 1
+		collision_mask = 1
 		sprite_2d.texture = textures[0]
 		sprite_2d.modulate = "ffffff"
 		sprite_2d.scale.x = 0.04
 		sprite_2d.scale.y = 0.04
-		collision_shape_2d.disabled = false

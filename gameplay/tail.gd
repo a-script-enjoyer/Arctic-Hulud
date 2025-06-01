@@ -21,10 +21,12 @@ func shift_underground():
 		sprite_2d.modulate.a = 0.9
 		sprite_2d.scale.x = 1.2
 		sprite_2d.scale.y = 1.2
-		collision_shape_2d.disabled = true
+		collision_layer = 2
+		collision_mask = 2
 	else:
 		sprite_2d.texture = texture_memo
 		sprite_2d.modulate.a = 1
 		sprite_2d.scale.x = 1
 		sprite_2d.scale.y = 1
-		collision_shape_2d.disabled = false
+		collision_layer = 1
+		collision_mask = 1

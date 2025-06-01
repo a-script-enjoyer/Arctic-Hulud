@@ -11,6 +11,7 @@ const gameplay_scene: PackedScene = preload("res://gameplay/gameplay.tscn")
 @onready var scream: AudioStreamPlayer = %Scream
 @onready var timer = %Timer
 
+
 var skip_request: bool = false
 var start_pressed: bool = false
 var speed: int = 100

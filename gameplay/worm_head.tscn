@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccjotlmmm7sfn"]
 
-[ext_resource type="Script" path="res://gameplay/worm_head.gd" id="1_cexh1"]
+[ext_resource type="Script" uid="uid://ofnaay4kdl6g" path="res://gameplay/worm_head.gd" id="1_cexh1"]
 [ext_resource type="Texture2D" uid="uid://cdqx5rtkgcfrj" path="res://gameplay/sprites/worm/image_creator_head.png" id="2_7cjmp"]
 [ext_resource type="Texture2D" uid="uid://cx3abpafuv6yl" path="res://gameplay/sprites/worm/grass_ground_n.jpg" id="3_wgvv4"]
 
@@ -12,14 +12,11 @@ modulate = Color(1, 0.564706, 0.498039, 1)
 script = ExtResource("1_cexh1")
 textures = Array[Texture]([ExtResource("2_7cjmp"), ExtResource("3_wgvv4")])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-1.19209e-07, 0)
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("2_7cjmp")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_cx2a5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
