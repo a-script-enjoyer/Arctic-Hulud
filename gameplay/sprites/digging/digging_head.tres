@@ -1,0 +1,75 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://c3qthpaidf0lu"]
+
+[ext_resource type="Texture2D" uid="uid://dq88cjp7ymt7i" path="res://gameplay/sprites/digging/Smoke_4_128-sheet.png" id="1_hdhls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_volna"]
+atlas = ExtResource("1_hdhls")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m52fw"]
+atlas = ExtResource("1_hdhls")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew3p5"]
+atlas = ExtResource("1_hdhls")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx62h"]
+atlas = ExtResource("1_hdhls")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73asw"]
+atlas = ExtResource("1_hdhls")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u2lr"]
+atlas = ExtResource("1_hdhls")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7gun"]
+atlas = ExtResource("1_hdhls")
+region = Rect2(768, 128, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_volna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m52fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew3p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx62h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73asw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u2lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7gun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u2lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73asw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx62h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew3p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m52fw")
+}],
+"loop": true,
+"name": &"dive",
+"speed": 12.0
+}]

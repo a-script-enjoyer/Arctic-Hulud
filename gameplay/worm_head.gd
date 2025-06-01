@@ -19,6 +19,7 @@ func _ready():
 	$AnimatedSprite2D.frames = sprite_frames
 	$AnimatedSprite2D.play("idle")
 	connect("death_finished", _on_death_finished)
+	z_index = 100
 
 func chomp():
 	# Personal flair condition, not tutorial
@@ -32,10 +33,14 @@ func chomp():
 			chomp_count = 0
 
 func dive():
+	$DiggingAnim.visible = true
+	$DiggingAnim.play("dive")
 	is_diving = true
 
 func resurface(dive_tracker, dive_segment_length):
 	if dive_tracker % dive_segment_length - 1 == 0:
+		$DiggingAnim.visible = false
+		$DiggingAnim.stop()
 		is_underground = false
 		last_underground_state = false
 		is_diving = false

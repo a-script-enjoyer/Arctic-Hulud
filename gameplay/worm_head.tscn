@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccjotlmmm7sfn"]
+[gd_scene load_steps=6 format=3 uid="uid://ccjotlmmm7sfn"]
 
 [ext_resource type="Script" uid="uid://ofnaay4kdl6g" path="res://gameplay/worm_head.gd" id="1_cexh1"]
 [ext_resource type="SpriteFrames" uid="uid://bt7b2iyhwp0g3" path="res://gameplay/sprites/worm_head/worm_head.tres" id="3_di16n"]
 [ext_resource type="AudioStream" uid="uid://lidjntvn7tpk" path="res://menus/sounds/dune-woman-2.mp3" id="3_lesmg"]
+[ext_resource type="SpriteFrames" uid="uid://c3qthpaidf0lu" path="res://gameplay/sprites/digging/digging_head.tres" id="4_lesmg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx2a5"]
 radius = 8.0
@@ -29,5 +30,10 @@ unique_name_in_owner = true
 [node name="DeathScream" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_lesmg")
+
+[node name="DiggingAnim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.87, 1.87)
+sprite_frames = ExtResource("4_lesmg")
+animation = &"dive"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckthkcc2x1vm1"]
+[gd_scene load_steps=11 format=3 uid="uid://ckthkcc2x1vm1"]
 
 [ext_resource type="Script" uid="uid://blobnijjo1wg6" path="res://gameplay/tail.gd" id="1_2y0cy"]
 [ext_resource type="Texture2D" uid="uid://bl1fbs2felwv" path="res://gameplay/sprites/worm/mntn_x1_d.jpg" id="2_8o5eb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://x3j82bsbw5ch" path="res://gameplay/sprites/worm/desert_mntn2_s.jpg" id="6_rjt5k"]
 [ext_resource type="Texture2D" uid="uid://bm4umf0eu15mi" path="res://gameplay/sprites/worm/desert_cracks_s.jpg" id="7_ivapk"]
 [ext_resource type="Texture2D" uid="uid://cx3abpafuv6yl" path="res://gameplay/sprites/worm/grass_ground_n.jpg" id="8_8vdpg"]
+[ext_resource type="SpriteFrames" uid="uid://fvctj8icfw2r" path="res://gameplay/sprites/digging/digging.tres" id="9_au7h2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l2v6"]
 radius = 8.0
@@ -16,6 +17,13 @@ radius = 8.0
 scale = Vector2(-0.025, -0.025)
 script = ExtResource("1_2y0cy")
 textures = Array[Texture]([ExtResource("2_8o5eb"), ExtResource("3_l72bt"), ExtResource("4_drvua"), ExtResource("5_rglhd"), ExtResource("6_rjt5k"), ExtResource("7_ivapk"), ExtResource("8_8vdpg")])
+
+[node name="DiggingAnimTail" type="AnimatedSprite2D" parent="."]
+top_level = true
+z_index = 150
+scale = Vector2(1.565, 1.565)
+sprite_frames = ExtResource("9_au7h2")
+animation = &"dive_body"
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Body"]]
 unique_name_in_owner = true
