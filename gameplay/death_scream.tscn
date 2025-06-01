@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://121uspalsxot"]
+
+[ext_resource type="Script" uid="uid://da33noqsxc6hp" path="res://audio_stream_player_2d.gd" id="1_y10gn"]
+
+[node name="DeathScream" type="AudioStreamPlayer2D"]
+script = ExtResource("1_y10gn")

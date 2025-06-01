@@ -18,6 +18,7 @@ var pause_menu: PauseMenu
 @onready var moving_sound = %MovingSound
 @onready var animate_snake_part = %AnimateSnakePart
 
+var can_move: bool = true
 var time_between_moves: float = 1000.0
 var time_since_last_move: float = 0
 var speed: float = 5000.0
@@ -48,38 +49,45 @@ func _ready():
 	head.food_eaten.connect(_on_food_eaten)
 	time_since_last_move = time_between_moves
 	head.body_collision.connect(_on_body_collided)
+	head.stop_movement.connect(_on_stop_movement)
 	spawner.spawn_food()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("ui_up"):
-		has_moving_started = true
-		new_move_direction = Vector2.UP
-	elif Input.is_action_just_pressed("ui_down"):
-		has_moving_started = true
-		new_move_direction = Vector2.DOWN
-	elif Input.is_action_just_pressed("ui_left"):
-		has_moving_started = true
-		new_move_direction = Vector2.LEFT
-	elif Input.is_action_just_pressed("ui_right"):
-		has_moving_started = true
-		new_move_direction = Vector2.RIGHT
-	move_direction = new_move_direction
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		if not snake_is_diving:
-			rumble.play()
-			snake_is_diving = true
-			head.dive()
+	if can_move:
+		if Input.is_action_just_pressed("ui_up"):
+			has_moving_started = true
+			new_move_direction = Vector2.UP
+			%WormHead/AnimatedSprite2D.play("walk_up")
+		elif Input.is_action_just_pressed("ui_down"):
+			has_moving_started = true
+			new_move_direction = Vector2.DOWN
+			%WormHead/AnimatedSprite2D.play("walk_down")
+		elif Input.is_action_just_pressed("ui_left"):
+			has_moving_started = true
+			new_move_direction = Vector2.LEFT
+			%WormHead/AnimatedSprite2D.play("walk_left")
+		elif Input.is_action_just_pressed("ui_right"):
+			has_moving_started = true
+			new_move_direction = Vector2.RIGHT
+			%WormHead/AnimatedSprite2D.play("walk_right")
+		move_direction = new_move_direction
 		
-	if Input.is_action_just_pressed("ui_cancel"):
-		pause_game()
+		if Input.is_action_just_pressed("ui_accept"):
+			if not snake_is_diving:
+				rumble.play()
+				snake_is_diving = true
+				head.dive()
+			
+		if Input.is_action_just_pressed("ui_cancel"):
+			pause_game()
 	
 func _physics_process(delta: float) -> void:
-	time_since_last_move += delta * speed
-	if time_since_last_move >= time_between_moves:
-		update_worm(time_between_moves)
-		time_since_last_move = 0
+	if can_move:
+		time_since_last_move += delta * speed
+		if time_since_last_move >= time_between_moves:
+			update_worm(time_between_moves)
+			time_since_last_move = 0
 
 func update_worm(delta):
 	if has_moving_started and not is_moving_sound_locked:
@@ -130,7 +138,10 @@ func _on_food_eaten():
 	speed += 500
 	score += 1
 	speed_changed.emit()
-	
+
+func _on_stop_movement():
+	print("Movement stopped.")
+	can_move = false
 						
 func _on_body_collided():
 	if not gameover_menu:

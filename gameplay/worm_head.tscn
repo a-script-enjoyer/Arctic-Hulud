@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccjotlmmm7sfn"]
 
 [ext_resource type="Script" uid="uid://ofnaay4kdl6g" path="res://gameplay/worm_head.gd" id="1_cexh1"]
-[ext_resource type="Texture2D" uid="uid://cdqx5rtkgcfrj" path="res://gameplay/sprites/worm/image_creator_head.png" id="2_7cjmp"]
-[ext_resource type="Texture2D" uid="uid://cx3abpafuv6yl" path="res://gameplay/sprites/worm/grass_ground_n.jpg" id="3_wgvv4"]
+[ext_resource type="SpriteFrames" uid="uid://bt7b2iyhwp0g3" path="res://gameplay/sprites/worm_head/worm_head.tres" id="3_di16n"]
+[ext_resource type="AudioStream" uid="uid://lidjntvn7tpk" path="res://menus/sounds/dune-woman-2.mp3" id="3_lesmg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx2a5"]
 radius = 8.0
@@ -10,7 +10,14 @@ radius = 8.0
 [node name="WormHead" type="Area2D"]
 modulate = Color(1, 0.564706, 0.498039, 1)
 script = ExtResource("1_cexh1")
-textures = Array[Texture]([ExtResource("2_7cjmp"), ExtResource("3_wgvv4")])
+sprite_frames = ExtResource("3_di16n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.505, 1.505)
+sprite_frames = ExtResource("3_di16n")
+animation = &"death"
+frame = 25
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -18,5 +25,9 @@ shape = SubResource("CircleShape2D_cx2a5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+
+[node name="DeathScream" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_lesmg")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
