@@ -1,6 +1,7 @@
 class_name WormHead extends SnakePart
 
 signal food_eaten
+signal power_up_eaten
 signal body_collision
 signal death_finished
 signal stop_movement
@@ -14,12 +15,14 @@ signal stop_movement
 var texture_memo: Texture
 var chomp_count: int = 0
 var is_diving: bool = true
+var invulnerability = false
 
 func _ready():
+	modulate = ("ff907f")
 	$AnimatedSprite2D.frames = sprite_frames
 	$AnimatedSprite2D.play("idle")
 	connect("death_finished", _on_death_finished)
-	z_index = 100
+	z_index = 105
 
 func chomp():
 	# Personal flair condition, not tutorial
@@ -50,6 +53,7 @@ func move_underground_head(will_be_underground):
 	is_underground = will_be_underground
 		
 func death():
+	z_index = 300
 	$AnimatedSprite2D.play("death")
 	emit_signal("stop_movement")
 	DeathScream.play_sound()
@@ -66,9 +70,11 @@ func _on_area_entered(area):
 		chomp()
 		#Call deferred calls a function after the end of the physics cycle
 		food_eaten.emit()
+		if area.is_in_group("PowerUp"):
+			power_up_eaten.emit()
 		area.call_deferred("queue_free")
 		# TODO: call head animation
-	elif area.is_in_group("Body"):
+	elif area.is_in_group("Body") and invulnerability == false:
 		death()
 	else:
 		pass

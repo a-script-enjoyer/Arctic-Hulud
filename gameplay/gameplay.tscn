@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvj22b07hhadd"]
+[gd_scene load_steps=15 format=3 uid="uid://dvj22b07hhadd"]
 
 [ext_resource type="Script" uid="uid://gmd8gqaju615" path="res://gameplay/gameplay.gd" id="1_ibbsy"]
 [ext_resource type="Texture2D" uid="uid://di2i1t2us4noq" path="res://gameplay/map/Ice_ground_snow_glacier_texture_seamless_tileable.jpg" id="2_gk27s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://csxlgb6rw7blc" path="res://gameplay/map_bounds.gd" id="3_d7d17"]
 [ext_resource type="Texture2D" uid="uid://bjlfijgqtjdc0" path="res://gameplay/sprites/grid.png" id="4_idfym"]
 [ext_resource type="Script" uid="uid://07uqh6mpr8e8" path="res://gameplay/spawner.gd" id="5_7e14m"]
+[ext_resource type="AudioStream" uid="uid://ch15s7yq7irf7" path="res://gameplay/sounds/lisan-al-gaib-a-stilgar-meme-viral-shorts-meme-dune-ytshorts-funny-youtubeshorts-short-101soundboards.mp3" id="5_vyivm"]
 [ext_resource type="AudioStream" uid="uid://dhpar3qgk8rwp" path="res://gameplay/sounds/digging-6691.mp3" id="5_xtlt2"]
 [ext_resource type="PackedScene" uid="uid://b7c0w12fuy7s8" path="res://hud/hud.tscn" id="6_oyhyf"]
 [ext_resource type="AudioStream" uid="uid://ddsajtliemi32" path="res://gameplay/sounds/monster-rumble-99026.mp3" id="6_wbrnn"]
@@ -39,6 +40,11 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 unique_name_in_owner = true
 position = Vector2(384, 544)
 scale = Vector2(1.3, 1.3)
+
+[node name="Lisan-Al-Gaib" type="AudioStreamPlayer" parent="WormHead"]
+unique_name_in_owner = true
+stream = ExtResource("5_vyivm")
+volume_db = 13.872
 
 [node name="DivingSound" type="AudioStreamPlayer" parent="WormHead"]
 unique_name_in_owner = true
@@ -76,6 +82,7 @@ unique_name_in_owner = true
 [node name="DesertBells" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("8_alb1o")
+volume_db = -8.462
 
 [node name="Timer" type="Timer" parent="DesertBells"]
 unique_name_in_owner = true

@@ -1,14 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckthkcc2x1vm1"]
+[gd_scene load_steps=6 format=3 uid="uid://ckthkcc2x1vm1"]
 
 [ext_resource type="Script" uid="uid://blobnijjo1wg6" path="res://gameplay/tail.gd" id="1_2y0cy"]
-[ext_resource type="Texture2D" uid="uid://bl1fbs2felwv" path="res://gameplay/sprites/worm/mntn_x1_d.jpg" id="2_8o5eb"]
-[ext_resource type="Texture2D" uid="uid://dvpexilb46tvf" path="res://gameplay/sprites/worm/mntn_dark_s.jpg" id="3_l72bt"]
-[ext_resource type="Texture2D" uid="uid://56akknckj2gq" path="res://gameplay/sprites/worm/mntn_darkx_d.jpg" id="4_drvua"]
-[ext_resource type="Texture2D" uid="uid://cam57cno5vrbh" path="res://gameplay/sprites/worm/mntn_brown_s.jpg" id="5_rglhd"]
-[ext_resource type="Texture2D" uid="uid://x3j82bsbw5ch" path="res://gameplay/sprites/worm/desert_mntn2_s.jpg" id="6_rjt5k"]
-[ext_resource type="Texture2D" uid="uid://bm4umf0eu15mi" path="res://gameplay/sprites/worm/desert_cracks_s.jpg" id="7_ivapk"]
-[ext_resource type="Texture2D" uid="uid://cx3abpafuv6yl" path="res://gameplay/sprites/worm/grass_ground_n.jpg" id="8_8vdpg"]
+[ext_resource type="Texture2D" uid="uid://cg5yttne30ws5" path="res://gameplay/sprites/worm/F3H9Hm.png" id="3_va2nl"]
 [ext_resource type="SpriteFrames" uid="uid://fvctj8icfw2r" path="res://gameplay/sprites/digging/digging.tres" id="9_au7h2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mod2"]
+atlas = ExtResource("3_va2nl")
+region = Rect2(0, 0, 206, 205.673)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l2v6"]
 radius = 8.0
@@ -16,7 +14,6 @@ radius = 8.0
 [node name="Tail" type="Area2D" groups=["Body"]]
 scale = Vector2(-0.025, -0.025)
 script = ExtResource("1_2y0cy")
-textures = Array[Texture]([ExtResource("2_8o5eb"), ExtResource("3_l72bt"), ExtResource("4_drvua"), ExtResource("5_rglhd"), ExtResource("6_rjt5k"), ExtResource("7_ivapk"), ExtResource("8_8vdpg")])
 
 [node name="DiggingAnimTail" type="AnimatedSprite2D" parent="."]
 top_level = true
@@ -27,6 +24,9 @@ animation = &"dive_body"
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Body"]]
 unique_name_in_owner = true
+scale = Vector2(23.72, 23.72)
+texture = SubResource("AtlasTexture_8mod2")
+region_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Body"]]
 unique_name_in_owner = true

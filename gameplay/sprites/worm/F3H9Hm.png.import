@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdqx5rtkgcfrj"
-path="res://.godot/imported/image_creator_head.png-c3ab1ceb419351436618b8d7226a190c.ctex"
+uid="uid://cg5yttne30ws5"
+path="res://.godot/imported/F3H9Hm.png-5f0f46fc2ee3f4fc302d651db24630d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/sprites/worm/image_creator_head.png"
-dest_files=["res://.godot/imported/image_creator_head.png-c3ab1ceb419351436618b8d7226a190c.ctex"]
+source_file="res://gameplay/sprites/worm/F3H9Hm.png"
+dest_files=["res://.godot/imported/F3H9Hm.png-5f0f46fc2ee3f4fc302d651db24630d3.ctex"]
 
 [params]
 

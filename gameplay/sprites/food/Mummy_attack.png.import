@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm4umf0eu15mi"
-path="res://.godot/imported/desert_cracks_s.jpg-66abfb0d236dc43676ffc5d77c7f8a01.ctex"
+uid="uid://belifgeop5ye6"
+path="res://.godot/imported/Mummy_attack.png-9df7f8cfdecb4f450a3c2dc532309c87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/sprites/worm/desert_cracks_s.jpg"
-dest_files=["res://.godot/imported/desert_cracks_s.jpg-66abfb0d236dc43676ffc5d77c7f8a01.ctex"]
+source_file="res://gameplay/sprites/food/Mummy_attack.png"
+dest_files=["res://.godot/imported/Mummy_attack.png-9df7f8cfdecb4f450a3c2dc532309c87.ctex"]
 
 [params]
 

@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://n767pmagkcnp"]
+
+[ext_resource type="Texture2D" uid="uid://belifgeop5ye6" path="res://gameplay/sprites/food/Mummy_attack.png" id="1_2tf52"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xaou"]
+atlas = ExtResource("1_2tf52")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx5o1"]
+atlas = ExtResource("1_2tf52")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4klm"]
+atlas = ExtResource("1_2tf52")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i66lj"]
+atlas = ExtResource("1_2tf52")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heyt6"]
+atlas = ExtResource("1_2tf52")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xyb4"]
+atlas = ExtResource("1_2tf52")
+region = Rect2(240, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xaou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx5o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4klm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i66lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heyt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xyb4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

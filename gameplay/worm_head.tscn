@@ -14,7 +14,8 @@ script = ExtResource("1_cexh1")
 sprite_frames = ExtResource("3_di16n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.505, 1.505)
+position = Vector2(0, 0.13)
+scale = Vector2(2.025, 2.025)
 sprite_frames = ExtResource("3_di16n")
 animation = &"death"
 frame = 25
@@ -32,6 +33,7 @@ unique_name_in_owner = true
 stream = ExtResource("3_lesmg")
 
 [node name="DiggingAnim" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(1.87, 1.87)
 sprite_frames = ExtResource("4_lesmg")
 animation = &"dive"

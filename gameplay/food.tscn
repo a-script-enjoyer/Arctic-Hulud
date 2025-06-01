@@ -1,15 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bng2ftxhdhvo4"]
+[gd_scene load_steps=5 format=3 uid="uid://bng2ftxhdhvo4"]
 
-[ext_resource type="Texture2D" uid="uid://cjv77qciv1l55" path="res://gameplay/sprites/tutorial/star-food.png" id="1_3ewsh"]
+[ext_resource type="Script" uid="uid://bsaulej787i1b" path="res://gameplay/food.gd" id="1_vwpdc"]
+[ext_resource type="SpriteFrames" uid="uid://n767pmagkcnp" path="res://gameplay/sprites/food/rider.tres" id="3_nxfer"]
+[ext_resource type="SpriteFrames" uid="uid://cmm36gyhvsf05" path="res://gameplay/sprites/food/normal.tres" id="4_boy0t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m1ckm"]
 radius = 15.0
 
-[node name="Food" type="Area2D" groups=["Food"]]
+[node name="Food" type="Area2D" node_paths=PackedStringArray("foods") groups=["Food"]]
 z_index = 200
+script = ExtResource("1_vwpdc")
+foods = [NodePath("Rider"), NodePath("Standard")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Food"]]
 shape = SubResource("CircleShape2D_m1ckm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Food"]]
-texture = ExtResource("1_3ewsh")
+
+[node name="Rider" type="AnimatedSprite2D" parent="."]
+position = Vector2(-12.23, -7.675)
+sprite_frames = ExtResource("3_nxfer")
+
+[node name="Standard" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.995, -7.21)
+sprite_frames = ExtResource("4_boy0t")

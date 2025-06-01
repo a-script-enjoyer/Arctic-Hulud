@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cmm36gyhvsf05"]
+
+[ext_resource type="Texture2D" uid="uid://blqdes64oqpue" path="res://gameplay/sprites/food/Deceased_idle.png" id="1_aeb3f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4x5s"]
+atlas = ExtResource("1_aeb3f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydo7x"]
+atlas = ExtResource("1_aeb3f")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcspi"]
+atlas = ExtResource("1_aeb3f")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvrdm"]
+atlas = ExtResource("1_aeb3f")
+region = Rect2(144, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4x5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydo7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcspi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvrdm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

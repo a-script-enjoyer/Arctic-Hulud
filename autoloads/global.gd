@@ -9,5 +9,6 @@ func _ready():
 
 func find_screenshot_path():
 	var _screenshot_date_str = Time.get_datetime_string_from_system().replace(":", "_")
-	var SCREENSHOT_PATH = "user://screenshots/" + _screenshot_date_str + ".png"
+	var exe_dir = OS.get_executable_path().get_base_dir()
+	var SCREENSHOT_PATH = exe_dir + "dune" + _screenshot_date_str + ".png"
 	return SCREENSHOT_PATH

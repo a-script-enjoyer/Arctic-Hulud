@@ -16,6 +16,7 @@ var pause_menu: PauseMenu
 @onready var rumble = %DivingSound
 @onready var spawn_sound = %SpawnSound
 @onready var moving_sound = %MovingSound
+@onready var lisan_al_gaib = %"Lisan-Al-Gaib"
 @onready var animate_snake_part = %AnimateSnakePart
 
 var can_move: bool = true
@@ -32,6 +33,8 @@ var snake_is_diving: bool = false
 var dive_segment_length: int = 10
 var has_moving_started: bool = false
 var is_moving_sound_locked: bool = false
+var invulnerability: bool = true
+var invul_tracker: int = 1
 
 var score: int:
 	get:
@@ -47,9 +50,12 @@ func _ready():
 	snake_parts.push_back(head)
 	desert_bells.finished.connect(_on_desert_bells_finished)
 	head.food_eaten.connect(_on_food_eaten)
+	head.power_up_eaten.connect(_on_power_up_eaten)
 	time_since_last_move = time_between_moves
 	head.body_collision.connect(_on_body_collided)
 	head.stop_movement.connect(_on_stop_movement)
+	speed_changed.connect(_quicken_moving_sound_raw)
+
 	spawner.spawn_food()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -96,9 +102,11 @@ func update_worm(delta):
 	if not is_only_head:
 		if snake_direction * -1 == move_direction:
 			move_direction *= -1
+			# TODO: fix animation if contrary to snake
 	var new_position:Vector2 = head.position + move_direction * Global.GRID_SIZE
+	var new_rotation:float = move_direction.angle()
 	new_position = map_bounds.wrap_vector(new_position)
-	head.move_to(new_position, move_direction)
+	head.move_to(new_position, new_rotation)
 	head.shift_underground()
 	
 	if snake_is_diving == true:
@@ -109,12 +117,19 @@ func update_worm(delta):
 	elif dive_tracker > dive_segment_length:
 		dive_tracker = 1
 	
+	if invulnerability == true:
+		invul_tracker += 1
+		if invul_tracker > 100:
+			disable_invulnerability()
+	
 	for i in range(1, snake_parts.size(),1):
-		snake_parts[i].move_to(snake_parts[i-1].last_position, move_direction)
+		if i == 1:
+			snake_parts[i].move_to(snake_parts[i-1].last_position, head.current_hidden_head_rotation, false)
+		else:
+			snake_parts[i].move_to(snake_parts[i-1].last_position, snake_parts[i-1].last_rotation, false)
 		snake_parts[i].move_underground(snake_parts[i-1].last_underground_state)
 		snake_parts[i].shift_underground()
 
-	print(dive_tracker)
 	head.resurface(dive_tracker, dive_segment_length)
 	if head.is_diving == false:
 		dive_tracker = 1
@@ -124,18 +139,48 @@ func update_worm(delta):
 
 func check_if_part_worm_underground():
 	for i in range(snake_parts.size()):
-		if snake_parts[i].is_underground == true:
+		if snake_parts[i].is_underground == true or invulnerability == true:
 			return true
 	rumble.stop()
 	return false
 
+func disable_invulnerability():
+	rumble.stop()
+	head.modulate = ("ff907f")
+	for i in range(1, snake_parts.size(), 1):
+		snake_parts[i].modulate = "ffffff"
+		snake_parts[i].invulnerable = false
+	invulnerability = false
+	head.invulnerability = false
+	invul_tracker = 1
+
+func enable_invulnerability():
+	lisan_al_gaib.play()
+	rumble.play()
+	head.modulate = "ff907f"
+	for i in range(1, snake_parts.size(), 1):
+		snake_parts[i].modulate = "ffc63e"
+		snake_parts[i].invulnerable = true
+	invulnerability = true
+	head.invulnerability = true
+
+func _on_power_up_eaten():
+	enable_invulnerability()
+
 func _on_food_eaten():
 	is_only_head = false
 	spawner.call_deferred("spawn_food")
-	snake_parts.append(spawner.spawn_tail(
-						snake_parts[snake_parts.size()-1].last_position,
-						snake_parts[snake_parts.size()-1].last_underground_state))
-	speed += 500
+	if len(snake_parts) > 1:
+		snake_parts.append(spawner.spawn_tail(
+							snake_parts[snake_parts.size()-1].last_position,
+							snake_parts[snake_parts.size()-1].last_underground_state,
+							snake_parts[snake_parts.size()-1].last_rotation))
+	else:
+		snake_parts.append(spawner.spawn_tail(
+							snake_parts[snake_parts.size()-1].last_position,
+							snake_parts[snake_parts.size()-1].last_underground_state,
+							snake_parts[snake_parts.size()-1].current_hidden_head_rotation))
+	speed += 400
 	score += 1
 	speed_changed.emit()
 
@@ -168,8 +213,6 @@ func _on_music_playing(music):
 	
 func _on_moving_sound_finished():
 	var moving_loop_activated: bool = false
-	if not moving_loop_activated:
-		speed_changed.connect(_quicken_moving_sound_raw)
 	moving_loop_activated = true
 	moving_sound.play()
 	
